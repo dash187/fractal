@@ -3,6 +3,10 @@
 Polynomial::Polynomial(size_t degree)
     : coefficients(degree + 1), zeros(degree) {}
 
+Polynomial::Polynomial(std::initializer_list<double> coeffs,
+                       std::initializer_list<Complex> zs)
+    : coefficients(coeffs), zeros(zs) {}
+
 Complex Polynomial::evalPolynomial(Complex z) {
   Complex res;
   for (size_t k = 0; k <= getDegree(); ++k) {

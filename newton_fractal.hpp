@@ -9,8 +9,8 @@ class NewtonFractal {
 public:
   NewtonFractal(size_t width, size_t height, Polynomial &poly);
 
-  void createFractal(int re_min, int re_max, int im_min, int im_max,
-                     int max_iterations);
+  Image &createFractal(int re_min, int re_max, int im_min, int im_max,
+                       int max_iterations);
   void save(const char *path);
 
 public: // EDIT LATER

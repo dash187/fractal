@@ -3,21 +3,18 @@
 NewtonFractal::NewtonFractal(size_t width, size_t height, Polynomial &poly)
     : img(width, height), poly(poly) {}
 
-void NewtonFractal::createFractal(int re_min, int re_max, int im_min,
-                                  int im_max, int max_iterations) {
+Image &NewtonFractal::createFractal(int re_min, int re_max, int im_min,
+                                    int im_max, int max_iterations) {
   double re_step = double(re_max - re_min) / double(img.getWidth() - 1);
   double im_step = double(im_max - im_min) / double(img.getHeight() - 1);
 
-  double x = re_min;
-  double y = im_min;
   for (size_t py = 0; py < img.getHeight(); ++py) {
     for (size_t px = 0; px < img.getWidth(); ++px) {
-      findZero(px, py, {x, y}, max_iterations);
-      x += re_step;
+      findZero(px, py, {re_min + re_step * px, im_min + im_step * py},
+               max_iterations);
     }
-    x = re_min;
-    y += im_step;
   }
+  return img;
 }
 
 void NewtonFractal::findZero(int x, int y, Complex z, int max_iterations) {

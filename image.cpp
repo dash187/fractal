@@ -1,10 +1,12 @@
 #include "image.hpp"
+#include <cmath>
 #include <cstdio>
 
 Image::Image(size_t width, size_t height)
-    : pixels(new Color[width * height]), width(width), height(height) {}
+    : pixels(width * height), width(width), height(height) {}
 
-Image::~Image() { delete[] pixels; }
+Image::Image(const Image &other)
+    : pixels(other.pixels), width(other.width), height(other.height) {}
 
 void Image::setPixel(size_t x, size_t y, uint8_t r, uint8_t g, uint8_t b) {
   if (x >= width || y >= height)
@@ -21,6 +23,12 @@ void Image::fill(uint8_t r, uint8_t g, uint8_t b) {
     pixels[i].g = g;
     pixels[i].b = b;
   }
+}
+
+Color &Image::operator()(size_t x, size_t y) { return pixels[x + width * y]; }
+
+const Color &Image::operator()(size_t x, size_t y) const {
+  return pixels[x + width * y];
 }
 
 void Image::saveAsPPM(const char *path) const {

@@ -11,7 +11,7 @@ compile:	main complex_test
 
 run:
 	./main
-	feh out.ppm
+	feh original.ppm & feh filtered.ppm &
 
 main:	$(OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJ)

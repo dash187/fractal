@@ -60,11 +60,9 @@ TEST(ComplexTest, MultDiv) {
 }
 
 TEST(PolyTest, evalPoly) {
-  size_t degree = 3;
-  double coeffs[4] = {-1, 0, 0, 1};
-  Complex zeros[3] = {{1, 0}, {-0.5, sqrt(3) / 2}, {-0.5, -sqrt(3) / 2}};
+  Polynomial poly({-1, 0, 0, 1}, {Complex(1, 0), Complex(-0.5, sqrt(3) / 2),
+                                  Complex(-0.5, -sqrt(3) / 2)});
 
-  Polynomial poly(degree, coeffs, zeros);
   Complex z = Complex(1, -2);
   Complex z2 = poly.evalPolynomial(z);
 
@@ -77,11 +75,8 @@ TEST(PolyTest, evalPoly) {
 }
 
 TEST(PolyTest, isZero) {
-  size_t degree = 3;
-  double coeffs[4] = {-1, 0, 0, 1};
-  Complex zeros[3] = {{1, 0}, {-0.5, sqrt(3) / 2}, {-0.5, -sqrt(3) / 2}};
-
-  Polynomial poly(degree, coeffs, zeros);
+  Polynomial poly({-1, 0, 0, 1}, {Complex(1, 0), Complex(-0.5, sqrt(3) / 2),
+                                  Complex(-0.5, -sqrt(3) / 2)});
   ASSERT_EQ(Polynomial::NO_ZERO, poly.getZeroIdx({1.1, 0}));
   ASSERT_EQ(0, poly.getZeroIdx({0.9999, 0}));
 }
