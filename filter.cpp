@@ -7,7 +7,10 @@ double Filter::gaussianDensity(double x, double sigma) {
 }
 
 std::vector<double> Filter::gaussianKernel(double sigma) {
-  std::vector<double> kernel(static_cast<size_t>(2 * sigma) + 1);
+  // Emperical rule: 99.7% of the values are within 3 standard deviations
+  // -3sigma, ..., 0, ..., +3 sigma
+  std::vector<double> kernel(
+      static_cast<size_t>(2.0 * std::ceil(3.0 * sigma) + 1.0));
   size_t center = kernel.size() / 2;
   double sum = 0.0;
   for (size_t i = 0; i <= center; ++i) {

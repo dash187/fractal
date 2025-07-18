@@ -14,7 +14,7 @@ int main() {
 
   Image filteredX(fractalImage.getWidth(), fractalImage.getHeight());
   Image filteredXY(fractalImage.getWidth(), fractalImage.getHeight());
-  std::vector<double> filter = Filter::gaussianKernel(10.0);
+  std::vector<double> filter = Filter::gaussianKernel(2.0);
   Filter::applyX(filteredX, fractalImage, filter);
   Filter::applyY(filteredXY, filteredX, filter);
 

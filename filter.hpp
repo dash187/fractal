@@ -1,5 +1,5 @@
-#ifndef FILTER_HPP_
-#define FILTER_HPP_
+#ifndef _FRACTALS_FILTER_HPP_
+#define _FRACTALS_FILTER_HPP_
 
 #include "image.hpp"
 #include <vector>
