@@ -42,7 +42,7 @@ void Filter::applyX(Image &res, const Image &img,
         if (xk < 0) {
           xk = -xk;
         } else if (xk >= static_cast<int>(img.getWidth())) {
-          xk = 2 * img.getWidth() - 1 - xk;
+          xk = 2 * (img.getWidth() - 1) - xk;
         }
         // apply the filter
         pixel.r += img(xk, y).r * filter[k + filterCenter];
@@ -69,7 +69,7 @@ void Filter::applyY(Image &res, const Image &img,
         if (yk < 0) {
           yk = -yk;
         } else if (yk >= static_cast<int>(img.getHeight())) {
-          yk = 2 * img.getHeight() - 1 - yk;
+          yk = 2 * (img.getHeight() - 1) - yk;
         }
         // apply the filter
         pixel.r += img(x, yk).r * filter[k + filterCenter];
