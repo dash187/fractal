@@ -3,7 +3,7 @@
 
 double Filter::gaussianDensity(double x, double sigma) {
   return (1.0 / (sigma * sqrt(2 * M_PI))) *
-         exp(-0.5 * (x * sigma) * (x / sigma));
+         exp(-0.5 * (x / sigma) * (x / sigma));
 }
 
 std::vector<double> Filter::gaussianKernel(double sigma) {
